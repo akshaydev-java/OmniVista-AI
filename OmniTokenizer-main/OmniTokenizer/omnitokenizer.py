@@ -95,7 +95,35 @@ class VQGAN(pl.LightningModule):
 
         if not hasattr(args, "initialize_vit"):
             args.initialize_vit = False
-        
+
+        if not hasattr(args, "causal_in_temporal_transformer"):
+            args.causal_in_temporal_transformer = False
+
+        if not hasattr(args, "causal_in_peg"):
+            args.causal_in_peg = False
+
+        if not hasattr(args, "patch_embed"):
+            args.patch_embed = "linear"
+
+        if not hasattr(args, "sequence_length"):
+            args.sequence_length = 16
+
+        if not hasattr(args, "temporal_patch_size"):
+            args.temporal_patch_size = 4
+
+        if not hasattr(args, "dim_head"):
+            args.dim_head = 64
+
+        if not hasattr(args, "ff_mult"):
+            args.ff_mult = 4
+
+        if not hasattr(args, "attn_dropout"):
+            args.attn_dropout = 0.0
+
+        if not hasattr(args, "ff_dropout"):
+            args.ff_dropout = 0.0
+
+
 
 
         self.resolution = args.resolution
