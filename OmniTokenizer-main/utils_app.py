@@ -52,7 +52,7 @@ def download_from_hf(url, filename):
             bar.update(size)
     return dest
 
-def process_video(video_path, model, device='cpu', resolution=256, sequence_length=16):
+def process_video(video_path, model, device='cpu', resolution=256, sequence_length=17):
     """Processes a video file through the model."""
     cap = cv2.VideoCapture(video_path)
     frames = []
