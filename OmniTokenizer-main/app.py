@@ -62,7 +62,7 @@ st.markdown(f"""
         text-align: center;
     }}
 </style>
-""", unsafe_with_html=True)
+""", unsafe_allow_html=True)
 
 # Sidebar
 st.sidebar.image("https://www.wangjunke.info/OmniTokenizer/static/images/teaser.png", use_container_width=True)
@@ -88,8 +88,8 @@ with st.spinner("Initializing OmniVista Engine..."):
     model = get_cached_model(selected_model_key, device)
 
 # Main Content
-st.markdown(f'<div class="header-style">{config.APP_NAME}</div>', unsafe_with_html=True)
-st.markdown(f'<div class="subheader-style">{config.APP_SUBTITLE}</div>', unsafe_with_html=True)
+st.markdown(f'<div class="header-style">{config.APP_NAME}</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="subheader-style">{config.APP_SUBTITLE}</div>', unsafe_allow_html=True)
 
 tab1, tab2, tab3, tab4 = st.tabs(["🖼️ Image Engine", "🎥 Video Engine", "🧩 Token Analysis", "📚 Documentation"])
 
@@ -169,11 +169,11 @@ with tab3:
                     
                     c1, c2, c3 = st.columns(3)
                     with c1:
-                        st.markdown(f'<div class="stats-card"><b>Unique Tokens</b><br><span style="font-size:24px; color:#00d2ff">{stats["unique_tokens"]}</span></div>', unsafe_with_html=True)
+                        st.markdown(f'<div class="stats-card"><b>Unique Tokens</b><br><span style="font-size:24px; color:#00d2ff">{stats["unique_tokens"]}</span></div>', unsafe_allow_html=True)
                     with c2:
-                        st.markdown(f'<div class="stats-card"><b>Most Active Code</b><br><span style="font-size:24px; color:#00d2ff">#{stats["most_frequent_token"]}</span></div>', unsafe_with_html=True)
+                        st.markdown(f'<div class="stats-card"><b>Most Active Code</b><br><span style="font-size:24px; color:#00d2ff">#{stats["most_frequent_token"]}</span></div>', unsafe_allow_html=True)
                     with c3:
-                        st.markdown(f'<div class="stats-card"><b>Token Entropy</b><br><span style="font-size:24px; color:#00d2ff">{stats["token_entropy"]:.2f}</span></div>', unsafe_with_html=True)
+                        st.markdown(f'<div class="stats-card"><b>Token Entropy</b><br><span style="font-size:24px; color:#00d2ff">{stats["token_entropy"]:.2f}</span></div>', unsafe_allow_html=True)
 
 with tab4:
     st.markdown(f"""
