@@ -75,7 +75,7 @@ def process_video(video_path, model, device='cpu', resolution=256, sequence_leng
     video_tensor = video_tensor * 2.0 - 1.0
     
     with torch.no_grad():
-        recons = model.decode(model.encode(video_tensor.to(device)))
+        recons = model.decode(model.encode(video_tensor.to(device), is_image=False), is_image=False)
         
     recons = (recons + 1.0) / 2.0
     recons = recons.clamp(0, 1).squeeze(0).permute(1, 2, 3, 0).cpu().numpy()
