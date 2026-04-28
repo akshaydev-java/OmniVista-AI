@@ -20,5 +20,6 @@ opencv-python-headless
 requests
 Pillow
 pyyaml
-transformers  
+transformers
+decord
  
