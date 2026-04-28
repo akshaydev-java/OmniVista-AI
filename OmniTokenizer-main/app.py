@@ -131,16 +131,32 @@ with tab2:
             with st.spinner("Analyzing temporal patches..."):
                 recons_frames = process_video(tfile.name, model, device=device, resolution=resolution)
                 
-                out_path = "reconstructed_video.mp4"
-                height, width, layers = recons_frames[0].shape
-                fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-                out = cv2.VideoWriter(out_path, fourcc, 10, (width, height))
+                # Write to a proper temp file with browser-compatible format
+                out_tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.mp4')
+                out_tmp.close()
+                
+                height, width = recons_frames[0].shape[:2]
+                # Use XVID codec which is more universally supported
+                fourcc = cv2.VideoWriter_fourcc(*'XVID')
+                tmp_avi = out_tmp.name.replace('.mp4', '.avi')
+                out = cv2.VideoWriter(tmp_avi, fourcc, 10, (width, height))
                 for frame in recons_frames:
                     out.write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
                 out.release()
                 
-                st.video(out_path)
-                st.success("Reconstruction success!")
+                # Read bytes directly and pass to Streamlit
+                with open(tmp_avi, 'rb') as f:
+                    video_bytes = f.read()
+                
+                st.video(video_bytes)
+                st.success("✅ Reconstruction success! Download the video above.")
+                st.download_button(
+                    "⬇️ Download Reconstructed Video",
+                    data=video_bytes,
+                    file_name="omnivista_reconstructed.avi",
+                    mime="video/x-msvideo"
+                )
+
 
 with tab3:
     st.markdown("### 🧩 Latent Space & Discrete Tokens")
