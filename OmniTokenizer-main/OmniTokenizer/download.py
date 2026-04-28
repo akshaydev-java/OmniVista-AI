@@ -62,14 +62,14 @@ def download(id_or_url, fname, root=os.path.expanduser('./ckpts')):
 
 
 def load_vqgan(tokenizer, vqgan_ckpt, device=torch.device('cpu')):
-    vqgan = OmniTokenizer_VQGAN.load_from_checkpoint(vqgan_ckpt, strict=False).to(device)
+    vqgan = OmniTokenizer_VQGAN.load_from_checkpoint(vqgan_ckpt, strict=False, weights_only=False).to(device)
     print(f"Load VQGAN weights from {vqgan_ckpt}.")
     vqgan.eval()
 
     return vqgan
 
 def load_transformer(gpt_ckpt, vqgan_ckpt, stft_vqgan_ckpt='', device=torch.device('cpu')):    
-    gpt = Net2NetTransformer.load_from_checkpoint(gpt_ckpt, strict=False).to(device)
+    gpt = Net2NetTransformer.load_from_checkpoint(gpt_ckpt, strict=False, weights_only=False).to(device)
     print(f"Load Transformer weights from {gpt_ckpt}.")
     gpt.eval()
 

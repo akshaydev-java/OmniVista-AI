@@ -9,7 +9,7 @@ import cv2
 
 def load_model(ckpt_path, device='cpu'):
     """Loads the OmniTokenizer model from a checkpoint."""
-    model = OmniTokenizer_VQGAN.load_from_checkpoint(ckpt_path, strict=False).to(device)
+    model = OmniTokenizer_VQGAN.load_from_checkpoint(ckpt_path, strict=False, weights_only=False).to(device)
     model.eval()
     return model
 
