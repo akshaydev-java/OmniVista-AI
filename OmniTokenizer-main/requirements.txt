@@ -22,4 +22,9 @@ Pillow
 pyyaml
 transformers
 decord
+imagenet_stubs
+timm
+einx
+beartype
+fairscale
  
