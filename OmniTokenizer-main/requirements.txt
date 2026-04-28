@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 streamlit
 torch
 torchvision
@@ -6,16 +7,14 @@ einops
 ftfy
 h5py
 imageio
-pytorch-lightning==1.5.4
+pytorch-lightning
 regex
 scikit-video
 tqdm
-fairscale
-lightning
 diffusers
 accelerate
 lpips
-numpy==1.26.2
+numpy<2.0.0
 scipy
 opencv-python-headless
 requests
