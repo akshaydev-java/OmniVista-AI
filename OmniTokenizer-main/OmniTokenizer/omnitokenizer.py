@@ -100,7 +100,7 @@ class VQGAN(pl.LightningModule):
             args.causal_in_temporal_transformer = False
 
         if not hasattr(args, "causal_in_peg"):
-            args.causal_in_peg = False
+            args.causal_in_peg = True  # matches encoder/decoder constructor default
 
         if not hasattr(args, "patch_embed"):
             args.patch_embed = "linear"
